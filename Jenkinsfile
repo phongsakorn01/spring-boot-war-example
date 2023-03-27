@@ -22,14 +22,10 @@ pipeline {
         }
    
         stage("Deploy on Prod"){
-             input {
-                message "Should we continue?"
-                ok "Yes we Should"
-            }
             
             steps{
                 // deploy on container -> plugin
-                deploy adapters: [tomcat9(credentialsId: 'tomcatCred', path: '', url: 'http://13.214.192.152:8080')], contextPath: '/couterapp', war: '**/*.war'
+                deploy adapters: [tomcat9(credentialsId: 'tomcatCred', path: '', url: 'http://13.214.192.152')], contextPath: '/couterapp', war: '**/*.war'
 
             }
         }
